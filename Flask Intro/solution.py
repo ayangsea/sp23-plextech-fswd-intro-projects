@@ -4,7 +4,8 @@ app = Flask(__name__)
 
 @app.route("/hello", methods = ['GET', 'POST'])
 def index():
-    return 'Hello World'
+    name = request.args.get('key') or request.args.get('name', "")
+    return 'Hello ' + name
 
 @app.route("/hello/<name>")
 def whatevername(name):
