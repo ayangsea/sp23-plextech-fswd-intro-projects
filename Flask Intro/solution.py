@@ -37,6 +37,9 @@ def plex_reflect():
 
 @app.route('/reflect/plex/form', methods=['POST'])
 def reflect_form():
-    return request.form
+    new_dict = dict()
+    for k, v in request.form.items():
+        new_dict["plex_" + k] = "plex_" + v
+    return new_dict
 
 app.run(host='0.0.0.0', port=81)
